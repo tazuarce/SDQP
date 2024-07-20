@@ -43,3 +43,15 @@ body{
     height: 100%;
     /* pointer-events: none; */ /* esto hace que no se pueda interactuar con los reproductores */
 }
+
+@media (max-width: 768px) {
+    .item {
+        flex-basis: 50%;
+    }
+}
+
+/* @media (min-width: 768px) and (max-width: 1024px) {
+    .item {
+        flex-basis: 50%;
+    }
+} */
