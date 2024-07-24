@@ -1,6 +1,9 @@
+console.log('javascript empieza')
+
 let frames;
 let players;
 function onYouTubeIframeAPIReady() {
+    console.log('API de YouTube cargada')
     frames = document.querySelectorAll('iframe');
     players = [];
     for(i = 0 ; i < frames.length ; i++){
@@ -40,3 +43,5 @@ function abrir(div){
     let link = players[div.id].getVideoUrl();
     window.open(link,'_blank');
 }
+
+console.log('javascript llega al final')
