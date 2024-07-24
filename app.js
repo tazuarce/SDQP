@@ -17,10 +17,26 @@ function onYouTubeIframeAPIReady() {
     }
 
     // asigno ids a los contenedores de los videos para poder usarlos después en las funciones mute, unmute y abrir
-    let divs_videos = document.querySelectorAll('.video');
-    for(i = 0 ; i < divs_videos.length ; i++){
-        divs_videos[i].id = i;
-    }
+    /* let item_videos = document.querySelectorAll('.item'); */
+    let videos = document.querySelectorAll('.video');
+    for(i = 0 ; i < videos.length ; i++){
+        videos[i].id = i;
+    /* let item_videos = document.querySelectorAll('.item'); */
+    /* let video;
+    for(i = 0 ; i < videos.length ; i++){
+        video = videos[i];
+        video.addEventListener('click',function(event){
+            abrir(event.target);
+        })
+        video.addEventListener('mouseover',function(event){
+            unmute(event.target);
+        })
+        video.addEventListener('mouseout',function(event){
+            mute(event.target);
+        })
+    } */
+}
+
 }
 
 document.addEventListener("visibilitychange", function() {
@@ -50,4 +66,4 @@ function abrir(div){
     window.open(link,'_blank');
 }
 
-console.log('javascript llega al final')
+console.log('javascript llega al final');
