@@ -85,3 +85,17 @@ function abrir(id){
 }
 
 console.log('javascript llega al final');
+
+document.getElementById('worldIcon').addEventListener('click', function() {
+    document.getElementById('modal').style.display = 'flex';
+});
+
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('modal').style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+    if (event.target == document.getElementById('modal')) {
+        document.getElementById('modal').style.display = 'none';
+    }
+});

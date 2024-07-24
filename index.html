@@ -9,97 +9,126 @@
 <body>
     <div id="contenido">
         <div id="header">
-            <h1>
-                SDQP
-            </h1>
+            <div id="izquierda">
+                <h1>
+                    SDQP
+                </h1>
+                <p>
+                    por tazuarce
+                </p>
+            </div>
+            
+            <div id="derecha">
+                <div class="icon" id="worldIcon">
+                    🗺️
+                </div>
+            </div>
         </div>
 
-    
-        <div id="monitor_container">
-            <div id="monitor">
-                <div class="item">
-                    <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/cb12KmMMDJA?autoplay=1&controls=0&mute=1&enablejsapi=1" title="TN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>cuál</h2>
+                <div class="flags">
+                    <div class="flag" onclick="selectFlag('Argentina')">
+                        <img src="argentina.png" alt="Argentina">
+                    </div>
+                    <div class="flag" onclick="selectFlag('Chile')">
+                        <img src="chile.png" alt="Chile">
+                    </div>
+                    <div class="flag" onclick="selectFlag('Estados Unidos')">
+                        <img src="usa.png" alt="Estados Unidos">
+                    </div>
+                    <div class="flag" onclick="selectFlag('Unión Europea')">
+                        <img src="eu.png" alt="Unión Europea">
                     </div>
                 </div>
-                
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/ocFG3yor--M?autoplay=1&controls=0&mute=1&enablejsapi=1" title="LN+" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-        
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/NdQSOItOQ5Y?autoplay=1&controls=0&mute=1&enablejsapi=1" title="C5N" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-        
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/avly0uwZzOE?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Crónica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-        
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/sFZe_RPnNSo?autoplay=1&controls=0&mute=1&enablejsapi=1" title="eldoce" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-        
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/8gs-9lsfVQU?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Telefé Noticias" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-        
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/RnTmtVFTSf0?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Canal 26" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-        
-                <!-- <div class="video" onclick="clickeado(this)"onmouseover="unmute(this)"> -->
-                    <!-- A24 no disponible en SDQP, no sé qué onda -->
-                    <!-- <iframe src="https://www.youtube-nocookie.com/embed/QGpHLgRnrx4?autoplay=1&controls=0&mute=1&enablejsapi=1" title="A24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe> -->
-                <!-- </div> -->
-        
-                <!-- Chile -->
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/YJtUDi_JOUw?autoplay=1&controls=0&mute=1&enablejsapi=1" title="TVN Chile" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-        
-                <!-- España -->
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/NqRP08sCG_w?autoplay=1&controls=0&mute=1&enablejsapi=1" title="RTVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-                
-        
-                <!-- Francia -->
-        
-                <div class="item">
-                        <div class="video" onclick="clickeado(this)">
-                        <iframe src="https://www.youtube-nocookie.com/embed/Y-IlMeCCtIg?autoplay=1&controls=0&mute=1&enablejsapi=1" title="FRANCE 24 Español" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                </div>
-        
-                
-                
-        
-                
-        
-                
-        
-                
-        
-                <!-- <iframe src="https://www.youtube-nocookie.com/embed/Yv5wuyS9doc?autoplay=1&controls=0&mute=1&enablejsapi=1" title="TV Pública" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                <iframe src="https://www.youtube-nocookie.com/embed/Aty7f8O0nfM?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Telefé" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                <iframe src="https://www.youtube-nocookie.com/embed/ncDi8vmZcG4?autoplay=1&controls=0&mute=1&enablejsapi=1" title="FOX" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe> -->
             </div>
+        </div>
+        
+        <div id="monitor">
+            <div class="item">
+                <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/cb12KmMMDJA?autoplay=1&controls=0&mute=1&enablejsapi=1" title="TN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+            
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/ocFG3yor--M?autoplay=1&controls=0&mute=1&enablejsapi=1" title="LN+" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+    
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/NdQSOItOQ5Y?autoplay=1&controls=0&mute=1&enablejsapi=1" title="C5N" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+    
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/avly0uwZzOE?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Crónica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+    
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/sFZe_RPnNSo?autoplay=1&controls=0&mute=1&enablejsapi=1" title="eldoce" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+    
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/8gs-9lsfVQU?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Telefé Noticias" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+    
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/RnTmtVFTSf0?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Canal 26" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+    
+            <!-- <div class="video" onclick="clickeado(this)"onmouseover="unmute(this)"> -->
+                <!-- A24 no disponible en SDQP, no sé qué onda -->
+                <!-- <iframe src="https://www.youtube-nocookie.com/embed/QGpHLgRnrx4?autoplay=1&controls=0&mute=1&enablejsapi=1" title="A24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe> -->
+            <!-- </div> -->
+    
+            <!-- Chile -->
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/YJtUDi_JOUw?autoplay=1&controls=0&mute=1&enablejsapi=1" title="TVN Chile" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+    
+            <!-- España -->
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/NqRP08sCG_w?autoplay=1&controls=0&mute=1&enablejsapi=1" title="RTVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+            
+    
+            <!-- Francia -->
+    
+            <div class="item">
+                    <div class="video" onclick="clickeado(this)">
+                    <iframe src="https://www.youtube-nocookie.com/embed/Y-IlMeCCtIg?autoplay=1&controls=0&mute=1&enablejsapi=1" title="FRANCE 24 Español" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+    
+            
+            
+    
+            
+    
+            
+    
+            
+    
+            <!-- <iframe src="https://www.youtube-nocookie.com/embed/Yv5wuyS9doc?autoplay=1&controls=0&mute=1&enablejsapi=1" title="TV Pública" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/Aty7f8O0nfM?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Telefé" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/ncDi8vmZcG4?autoplay=1&controls=0&mute=1&enablejsapi=1" title="FOX" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe> -->
         </div>
         
     </div>
