@@ -15,6 +15,23 @@ body{
     min-height: 100vh;
 }
 
+/* .item {
+    background-color: black;
+} */
+
+.sonandoAhora {
+    background-color: red;
+}
+
+
+.sonandoAhora:hover {
+    background-color: orange;
+}
+
+.noSonando {
+    background-color: black;
+}
+
 .oculto{
     display: none;
 }

@@ -8,6 +8,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 let frames;
 let players;
+let videos = document.querySelectorAll('.video');
 function onYouTubeIframeAPIReady() {
     console.log('API de YouTube cargada')
     frames = document.querySelectorAll('iframe');
@@ -18,7 +19,6 @@ function onYouTubeIframeAPIReady() {
 
     // asigno ids a los contenedores de los videos para poder usarlos después en las funciones mute, unmute y abrir
     /* let item_videos = document.querySelectorAll('.item'); */
-    let videos = document.querySelectorAll('.video');
     for(i = 0 ; i < videos.length ; i++){
         videos[i].id = i;
     /* let item_videos = document.querySelectorAll('.item'); */
@@ -46,23 +46,41 @@ document.addEventListener("visibilitychange", function() {
 });
 
 
-
 function aver(){
     document.getElementById('monitor_container').classList.toggle('oculto');
-    document.getElementById('start').style.display = 'none';;
+    document.getElementById('start').style.display = 'none';
 }
 
-
-function mute(div){
-    players[div.id].mute();
+function clickeado(div){
+    console.log(div.classList);
+    if(div.parentElement.classList.contains('sonandoAhora')){
+        console.log('está sonando');
+        mute(div.id);
+        abrir(div.id);
+    } else {
+        console.log('no está sonando');
+        unmute(div.id);
+    }
+    
 }
 
-function unmute(div){
-    players[div.id].unMute();
+function mute(id){
+    players[id].mute();
+    videos[id].parentElement.classList.remove('sonandoAhora');
+    videos[id].parentElement.classList.add('noSonando');
 }
 
-function abrir(div){
-    let link = players[div.id].getVideoUrl();
+function unmute(id){
+    for(i = 0 ; i < players.length ; i++){
+        mute(videos[i].id)
+    }
+    players[id].unMute();
+    videos[id].parentElement.classList.add('sonandoAhora');
+    videos[id].parentElement.classList.remove('noSonando');
+}
+
+function abrir(id){
+    let link = players[id].getVideoUrl();
     window.open(link,'_blank');
 }
 
