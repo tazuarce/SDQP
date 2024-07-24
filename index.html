@@ -22,6 +22,9 @@
                 <div class="icon" id="worldIcon">
                     🗺️
                 </div>
+                <div class="icon" id="mute">
+                    🔇
+                </div>
             </div>
         </div>
 
@@ -30,16 +33,16 @@
                 <span class="close" id="closeModal">&times;</span>
                 <h2>cuál</h2>
                 <div class="flags">
-                    <div class="flag" onclick="selectFlag('Argentina')">
+                    <div class="flag">
                         <img src="argentina.png" alt="Argentina">
                     </div>
-                    <div class="flag" onclick="selectFlag('Chile')">
+                    <div class="flag">
                         <img src="chile.png" alt="Chile">
                     </div>
-                    <div class="flag" onclick="selectFlag('Estados Unidos')">
+                    <div class="flag">
                         <img src="usa.png" alt="Estados Unidos">
                     </div>
-                    <div class="flag" onclick="selectFlag('Unión Europea')">
+                    <div class="flag">
                         <img src="eu.png" alt="Unión Europea">
                     </div>
                 </div>
@@ -47,43 +50,43 @@
         </div>
         
         <div id="monitor">
-            <div class="item">
+            <div class="item noSonando">
                 <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/cb12KmMMDJA?autoplay=1&controls=0&mute=1&enablejsapi=1" title="TN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
             
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/ocFG3yor--M?autoplay=1&controls=0&mute=1&enablejsapi=1" title="LN+" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
     
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/NdQSOItOQ5Y?autoplay=1&controls=0&mute=1&enablejsapi=1" title="C5N" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
     
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/avly0uwZzOE?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Crónica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
     
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/sFZe_RPnNSo?autoplay=1&controls=0&mute=1&enablejsapi=1" title="eldoce" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
     
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/8gs-9lsfVQU?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Telefé Noticias" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
     
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/RnTmtVFTSf0?autoplay=1&controls=0&mute=1&enablejsapi=1" title="Canal 26" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
@@ -95,14 +98,14 @@
             <!-- </div> -->
     
             <!-- Chile -->
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/YJtUDi_JOUw?autoplay=1&controls=0&mute=1&enablejsapi=1" title="TVN Chile" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
     
             <!-- España -->
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/NqRP08sCG_w?autoplay=1&controls=0&mute=1&enablejsapi=1" title="RTVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
@@ -111,7 +114,7 @@
     
             <!-- Francia -->
     
-            <div class="item">
+            <div class="item noSonando">
                     <div class="video" onclick="clickeado(this)">
                     <iframe src="https://www.youtube-nocookie.com/embed/Y-IlMeCCtIg?autoplay=1&controls=0&mute=1&enablejsapi=1" title="FRANCE 24 Español" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>

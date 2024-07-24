@@ -18,24 +18,9 @@ function onYouTubeIframeAPIReady() {
     }
 
     // asigno ids a los contenedores de los videos para poder usarlos después en las funciones mute, unmute y abrir
-    /* let item_videos = document.querySelectorAll('.item'); */
     for(i = 0 ; i < videos.length ; i++){
         videos[i].id = i;
-    /* let item_videos = document.querySelectorAll('.item'); */
-    /* let video;
-    for(i = 0 ; i < videos.length ; i++){
-        video = videos[i];
-        video.addEventListener('click',function(event){
-            abrir(event.target);
-        })
-        video.addEventListener('mouseover',function(event){
-            unmute(event.target);
-        })
-        video.addEventListener('mouseout',function(event){
-            mute(event.target);
-        })
-    } */
-}
+    }
 
 }
 
@@ -44,12 +29,6 @@ document.addEventListener("visibilitychange", function() {
         location.reload();
     }
 });
-
-
-function aver(){
-    document.getElementById('monitor_container').classList.toggle('oculto');
-    document.getElementById('start').style.display = 'none';
-}
 
 function clickeado(div){
     console.log(div.classList);
@@ -70,10 +49,14 @@ function mute(id){
     videos[id].parentElement.classList.add('noSonando');
 }
 
-function unmute(id){
-    for(i = 0 ; i < players.length ; i++){
+function mutearTodos(){
+    for(i = 0 ; i < videos.length ; i++){
         mute(videos[i].id)
     }
+}
+
+function unmute(id){
+    mutearTodos();
     players[id].unMute();
     videos[id].parentElement.classList.add('sonandoAhora');
     videos[id].parentElement.classList.remove('noSonando');
@@ -98,4 +81,8 @@ window.addEventListener('click', function(event) {
     if (event.target == document.getElementById('modal')) {
         document.getElementById('modal').style.display = 'none';
     }
+});
+
+document.getElementById('mute').addEventListener('click', function() {
+    mutearTodos();
 });

@@ -32,6 +32,10 @@ body{
     background-color: black;
 }
 
+.noSonando:hover{
+    background-color: #aaa;
+}
+
 .oculto{
     display: none;
 }
@@ -47,6 +51,11 @@ body{
 }
 
 #izquierda{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#derecha{
     display: flex;
     align-items: center;
     gap: 20px;
