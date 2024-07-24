@@ -20,12 +20,12 @@ body{
 } */
 
 .sonandoAhora {
-    background-color: red;
+    background-color: blue;
 }
 
 
 .sonandoAhora:hover {
-    background-color: orange;
+    background-color: purple;
 }
 
 .noSonando {
