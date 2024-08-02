@@ -36,8 +36,10 @@ const codigosDeVideos = {
     "ABC News" : "-mvUkiILTqI",
     "CGTN Europe" : "UkcHAbq9PVQ",
     "Watch Sky News" : "oJUvTVdTMyY"
+    
 }
 
+let APIlista = false;
 function onYouTubeIframeAPIReady() {
     let monitor = document.getElementById('monitor');
     
@@ -45,6 +47,8 @@ function onYouTubeIframeAPIReady() {
     players = [];
     let idNumerico = 0;
     for(let canal of Object.keys(codigosDeVideos)) {
+
+        // creo un elemento con la etiqueta "this"
         newDiv = document.createElement('div');
         newDiv.setAttribute('id', 'this');
 
@@ -59,6 +63,7 @@ function onYouTubeIframeAPIReady() {
 
         monitor.appendChild(newItem);
 
+        // hago un player con ese elemento
         players.push(new YT.Player('this',{
             videoId: codigosDeVideos[canal],
             playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1 , 'enablejsapi': 1},
@@ -71,14 +76,48 @@ function onYouTubeIframeAPIReady() {
     }
 
     videos = document.querySelectorAll('.video');
-    console.log(videos);
+    console.log(players);
+
+    APIlista = true;
 }
 
 
 // esto debería poder cambiarlo por algo que reinicie los videos que no están sonando
 document.addEventListener("visibilitychange", function() {
-    if (document.visibilityState === "visible") {
-        location.reload();
+    if (document.visibilityState === "visible" && APIlista) {
+        /* for(let player of players){
+            console.log('itera');
+            if (player.isMuted()){
+                console.log(player.getVideoUrl());
+                player.loadVideoByUrl({
+                    mediaContentUrl: player.getVideoUrl(),
+                    playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1 , 'enablejsapi': 1}
+                });
+            }
+        } */
+
+        let currentID;
+        for(let i = 0 ; i < players.length ; i++){
+            if(i != idSonando){
+                currentID = players[i].getVideoData().video_id;
+                players[i].loadVideoById(currentID);
+
+
+                /* console.log(players[i].getVideoUrl());
+                url = 'https://www.youtube.com/watch?v=_wacToLYMh4'; // url = players[i].getVideoUrl();
+                console.log(url);
+                players[i].getIframe().setAttribute('id','this');
+                players[i] = new YT.Player('this',{
+                    mediaContentUrl: url,
+                    playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1 , 'enablejsapi': 1},
+                    events:{}
+                });
+                players[i].getIframe().setAttribute('id','');
+                console.log(players[i]); */
+            }
+        }
+
+        
     }
 });
 
@@ -100,6 +139,7 @@ function estasSeguro(){ //
 }
 
 function mute(id){
+    console.log('intentando mutear ' + id);
     players[id].mute();
     videos[id].parentElement.classList.remove('sonando');
 }
