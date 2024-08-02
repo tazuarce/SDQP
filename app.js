@@ -20,7 +20,7 @@ const codigosDeVideos = {
     "telefe noticias":"8gs-9lsfVQU",
     /* "A24" : "QGpHLgRnrx4", */ // ;( no disponible dice
     "Canal 26":"rY6a3fuaQ5Q",
-    "T13":"kc3JyNqbuPU",
+    "T13":"1QPcqOIlxKI",
     "France 24":"Y-IlMeCCtIg",
     "FOX":"YDfiTGGPYCk",
     "CBS News": "GiIQ-aCCA_w",
