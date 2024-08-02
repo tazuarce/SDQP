@@ -81,39 +81,14 @@ function onYouTubeIframeAPIReady() {
     APIlista = true;
 }
 
-
-// esto debería poder cambiarlo por algo que reinicie los videos que no están sonando
 document.addEventListener("visibilitychange", function() {
     if (document.visibilityState === "visible" && APIlista) {
-        /* for(let player of players){
-            console.log('itera');
-            if (player.isMuted()){
-                console.log(player.getVideoUrl());
-                player.loadVideoByUrl({
-                    mediaContentUrl: player.getVideoUrl(),
-                    playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1 , 'enablejsapi': 1}
-                });
-            }
-        } */
 
         let currentID;
         for(let i = 0 ; i < players.length ; i++){
             if(i != idSonando){
                 currentID = players[i].getVideoData().video_id;
                 players[i].loadVideoById(currentID);
-
-
-                /* console.log(players[i].getVideoUrl());
-                url = 'https://www.youtube.com/watch?v=_wacToLYMh4'; // url = players[i].getVideoUrl();
-                console.log(url);
-                players[i].getIframe().setAttribute('id','this');
-                players[i] = new YT.Player('this',{
-                    mediaContentUrl: url,
-                    playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1 , 'enablejsapi': 1},
-                    events:{}
-                });
-                players[i].getIframe().setAttribute('id','');
-                console.log(players[i]); */
             }
         }
 
@@ -122,15 +97,11 @@ document.addEventListener("visibilitychange", function() {
 });
 
 function clickeado(div){
-    /* console.log(div.classList); */
     if(div.parentElement.classList.contains('sonando')){
-        /* console.log('está sonando'); */
         estasSeguro(div.id);
     } else {
-        /* console.log('no está sonando'); */
         unmute(div.id);
     }
-    
 }
 
 function estasSeguro(){ //
@@ -158,15 +129,10 @@ function unmute(id){
 }
 
 function abrir(id){
-    /* console.log(players);
-    console.log(id);
-    console.log(players[id]);
-    console.log(players[id].getVideoUrl()); */
     let link = players[id].getVideoUrl();
     window.open(link,'_blank');
 }
 
-/* console.log('javascript llega al final'); */
 
 document.getElementById('worldIcon').addEventListener('click', function() {
     document.getElementById('modal').style.display = 'flex';
