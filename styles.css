@@ -323,3 +323,12 @@ body{
 .oculto{
     display: none;
 }
+
+#yo{
+    color: white;
+}
+
+#yo:hover{
+    color: lightseagreen;
+    font-style: bold;
+}
