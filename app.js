@@ -39,6 +39,9 @@ const codigosDeVideos = {
     
 }
 
+const principales = ["TN", "LN+", "C5N", "Crónica", "el doce", "telefe noticias", "Canal 26", "T13", "France 24"];
+
+let seleccionVideos;
 let APIlista = false;
 function onYouTubeIframeAPIReady() {
     let monitor = document.getElementById('monitor');
@@ -46,7 +49,21 @@ function onYouTubeIframeAPIReady() {
     let newDiv, newVideo, newItem;
     players = [];
     let idNumerico = 0;
-    for(let canal of Object.keys(codigosDeVideos)) {
+
+
+
+    if(!localStorage.getItem('seleccionSDQP')){
+        let codigosPrincipales = {};
+        for(let canal of principales){
+            codigosPrincipales[canal] = codigosDeVideos[canal];
+        }
+        localStorage.setItem('seleccionSDQP',JSON.stringify(codigosPrincipales));
+    }
+
+    seleccionVideos = JSON.parse(localStorage.getItem('seleccionSDQP'));
+
+
+    for(let canal of Object.keys(seleccionVideos)) {
 
         // creo un elemento con la etiqueta "this"
         newDiv = document.createElement('div');
@@ -95,6 +112,7 @@ document.addEventListener("visibilitychange", function() {
         
     }
 });
+
 
 function clickeado(div){
     if(div.parentElement.classList.contains('sonando')){
