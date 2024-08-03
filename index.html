@@ -37,22 +37,13 @@
             <div class="modal-content">
                 <span class="close" id="closeModal">&times;</span>
                 <div id="filtros">
-                    <h2>Seleccioná filtro</h2>
-                        <p>(placeholder)
-                        </p>
-                        <div class="flags">
-                            <div class="flag">
-                                <img src="argentina.png" alt="Argentina">
-                            </div>
-                            <div class="flag">
-                                <img src="chile.png" alt="Chile">
-                            </div>
-                            <div class="flag">
-                                <img src="usa.png" alt="Estados Unidos">
-                            </div>
-                            <div class="flag">
-                                <img src="eu.png" alt="Unión Europea">
-                            </div>
+                    <h2 id="tituloCanales">Canales monitoreados</h2>
+                        <div id="canalesMonitoreados">
+                            <!-- acá se crean dinámicamente desde javascript -->
+                        </div>
+                        <div class="botones">
+                            <button class="boton agregar" onclick="agregarCanales()">Agregar canales</button>
+                            <button class="boton resetear" onclick="resetearCanales()">Resetear</button>
                         </div>
                 </div>
                 <div id="helpText">

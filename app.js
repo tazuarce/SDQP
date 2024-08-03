@@ -1,4 +1,6 @@
 /* console.log('javascript empieza') */
+let cambiosGuardados = true;
+
 
 // carga de la API de youtube
 let tag = document.createElement('script');
@@ -17,9 +19,10 @@ const codigosDeVideos = {
     "C5N":"NdQSOItOQ5Y",
     "Crónica":"avly0uwZzOE",
     "el doce":"sFZe_RPnNSo",
-    "telefe noticias":"8gs-9lsfVQU",
+    "telefé noticias":"8gs-9lsfVQU",
     /* "A24" : "QGpHLgRnrx4", */ // ;( no disponible dice
     "Canal 26":"rY6a3fuaQ5Q",
+    "TVN":"wALLwCjrg3A",
     "T13":"1QPcqOIlxKI",
     "France 24":"Y-IlMeCCtIg",
     "FOX":"YDfiTGGPYCk",
@@ -39,7 +42,17 @@ const codigosDeVideos = {
     
 }
 
-const principales = ["TN", "LN+", "C5N", "Crónica", "el doce", "telefe noticias", "Canal 26", "T13", "France 24"];
+const principales = ["TN", "LN+", "C5N", "Crónica", "el doce", "telefé noticias", "Canal 26", "TVN", "France 24"];
+
+function codigosDe(nombres){
+    let codigos = {};
+    for(let nombre of nombres){
+        codigos[nombre] = codigosDeVideos[nombre];
+    }
+    return codigos;
+}
+
+
 
 let seleccionVideos;
 let APIlista = false;
@@ -50,17 +63,20 @@ function onYouTubeIframeAPIReady() {
     players = [];
     let idNumerico = 0;
 
-
-
     if(!localStorage.getItem('seleccionSDQP')){
-        let codigosPrincipales = {};
-        for(let canal of principales){
-            codigosPrincipales[canal] = codigosDeVideos[canal];
-        }
-        localStorage.setItem('seleccionSDQP',JSON.stringify(codigosPrincipales));
+        localStorage.setItem('seleccionSDQP',JSON.stringify(codigosDe(principales)));
     }
 
     seleccionVideos = JSON.parse(localStorage.getItem('seleccionSDQP'));
+    console.log(seleccionVideos);
+
+    let canalesMonitoreados = document.getElementById('canalesMonitoreados');
+    for(let seleccion in seleccionVideos){
+        newDiv = divDeClase('canal seleccionado');
+        newDiv.onclick = quitarCanal;
+        newDiv.innerHTML =  seleccion;
+        canalesMonitoreados.appendChild(newDiv);
+    }
 
 
     for(let canal of Object.keys(seleccionVideos)) {
@@ -69,20 +85,18 @@ function onYouTubeIframeAPIReady() {
         newDiv = document.createElement('div');
         newDiv.setAttribute('id', 'this');
 
-        newVideo = document.createElement('div');
-        newVideo.classList.add('video');
+        newVideo = divDeClase ('video');
         newVideo.setAttribute("onclick", "clickeado(this)")
         newVideo.appendChild(newDiv);
 
-        newItem = document.createElement('div');
-        newItem.classList.add('item');
+        newItem =  divDeClase ('item');
         newItem.appendChild(newVideo);
 
         monitor.appendChild(newItem);
 
         // hago un player con ese elemento
         players.push(new YT.Player('this',{
-            videoId: codigosDeVideos[canal],
+            videoId: seleccionVideos[canal],
             playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1 , 'enablejsapi': 1},
             events:{}
         }));
@@ -98,8 +112,46 @@ function onYouTubeIframeAPIReady() {
     APIlista = true;
 }
 
+function divDeClase(clase){
+    let newDiv = document.createElement('div');
+    newDiv.className = clase;
+    return newDiv;
+}
+
+function agregarCanal(canal,codigo){
+    seleccionVideos[canal] = codigo;
+    cambiosGuardados = false;
+}
+
+function quitarCanal(evento){
+    delete seleccionVideos[evento.target.innerHTML];
+    evento.target.remove();
+    localStorage.setItem('seleccionSDQP',JSON.stringify(seleccionVideos));
+    cambiosGuardados = false;
+}
+
+function guardarCambios(){
+    localStorage['seleccionSDQP'] = seleccionVideos
+    cambiosGuardados = true;
+}
+
+function resetearCanales(){
+    localStorage.setItem('seleccionSDQP',JSON.stringify(codigosDe(principales)));
+    cambiosGuardados = true;
+    location.reload();
+}
+
+
+
+
+
+
 document.addEventListener("visibilitychange", function() {
     if (document.visibilityState === "visible" && APIlista) {
+        if(salio){
+            this.location.reload();
+        }
+
 
         let currentID;
         for(let i = 0 ; i < players.length ; i++){
@@ -146,9 +198,11 @@ function unmute(id){
     idSonando = id;
 }
 
+let salio = false;
 function abrir(id){
     let link = players[id].getVideoUrl();
     window.open(link,'_blank');
+    salio = true;
 }
 
 
@@ -164,7 +218,7 @@ document.getElementById('closeModal').addEventListener('click', function() {
 
 window.addEventListener('click', function(event) {
     if (event.target == document.getElementById('modal')) {
-        cerrarModal()
+        cerrarModal();
     }
 });
 
@@ -178,6 +232,14 @@ document.getElementById('yes').addEventListener('click', function() {
 });
 
 function cerrarModal(){
+    if(!cambiosGuardados){
+        /* debería preguntar si se quiere guardar los cambios o salir así sin más */
+    }
+
+    if(document.getElementById('filtros').style.display == 'block'){
+        location.reload();
+    }
+
     document.getElementById('modal').style.display = 'none';
     document.getElementById('filtros').style.display = 'none';
     document.getElementById('helpText').style.display = 'none';
@@ -192,3 +254,24 @@ document.getElementById('helpIcon').addEventListener('click', function() {
     document.getElementById('modal').style.display = 'flex';
     document.getElementById('helpText').style.display = 'block';
 });
+
+function nuevoModal(){
+    let modal = divDeClase('modal');
+    modal.appendChild(divDeClase('modal-content'))
+    return modal;
+}
+
+function agregarCanales(){
+    /* let modal = nuevoModal();
+    document.getElementById('contenido').appendChild(modal); */
+
+}
+
+function estasSeguro2(funcion){
+    /* se le pregunta al usuario si está seguro de que ejecutar la función */
+
+    /* se asigna el sí y el no de los botones */
+    document.getElementById('yes').onclick = 'funcion()';
+    /* se muestar el sí o no */
+    document.getElementById('no').onclick = 'cerrarModal()';
+}
