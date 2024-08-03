@@ -42,7 +42,7 @@ const codigosDeVideos = {
     
 }
 
-const principales = ["TN", "LN+", "C5N", "Crónica", "el doce", "telefé noticias", "Canal 26", "TVN", "France 24"];
+const principales = ["TN", "LN+", "C5N", "Crónica", "telefé noticias", "Canal 26", "el doce", "TVN", "T13"];
 
 function codigosDe(nombres){
     let codigos = {};
