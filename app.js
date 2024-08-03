@@ -68,15 +68,6 @@ function onYouTubeIframeAPIReady() {
     }
 
     seleccionVideos = JSON.parse(localStorage.getItem('seleccionSDQP'));
-    console.log(seleccionVideos);
-
-    let canalesMonitoreados = document.getElementById('canalesMonitoreados');
-    for(let seleccion in seleccionVideos){
-        newDiv = divDeClase('canal seleccionado');
-        newDiv.onclick = quitarCanal;
-        newDiv.innerHTML =  seleccion;
-        canalesMonitoreados.appendChild(newDiv);
-    }
 
 
     for(let canal of Object.keys(seleccionVideos)) {
@@ -118,21 +109,34 @@ function divDeClase(clase){
     return newDiv;
 }
 
-function agregarCanal(canal,codigo){
-    seleccionVideos[canal] = codigo;
-    cambiosGuardados = false;
+function agregarTransmision(){
+    let nombreIngresado = document.getElementById('inputNombre').value;
+    let codigoIngresado = document.getElementById('inputCodigo').value;
+
+    seleccionVideos[nombreIngresado] = codigoIngresado;
+    marcarSeleccionado(nombreIngresado);
+    cambiosSinGuardar();
 }
 
 function quitarCanal(evento){
     delete seleccionVideos[evento.target.innerHTML];
     evento.target.remove();
-    localStorage.setItem('seleccionSDQP',JSON.stringify(seleccionVideos));
+    /* localStorage.setItem('seleccionSDQP',JSON.stringify(seleccionVideos)); */
+    cambiosSinGuardar();
+    
+}
+
+function cambiosSinGuardar(){
+    let boton = document.getElementById('guardar');
+    boton.classList.remove('deshabilitado');
+    boton.addEventListener('click', guardarCambios);
     cambiosGuardados = false;
 }
 
 function guardarCambios(){
-    localStorage['seleccionSDQP'] = seleccionVideos
+    localStorage['seleccionSDQP'] = JSON.stringify(seleccionVideos);
     cambiosGuardados = true;
+    location.reload();
 }
 
 function resetearCanales(){
@@ -210,7 +214,21 @@ document.getElementById('worldIcon').addEventListener('click', function() {
     document.getElementById('modal').style.display = 'flex';
     document.getElementById('filtros').style.display = 'block';
 
+    seleccionVideos = JSON.parse(localStorage.getItem('seleccionSDQP'));
+    let canalesMonitoreados = document.getElementById('canalesMonitoreados');
+    canalesMonitoreados.innerHTML = '';
+    for(let seleccion in seleccionVideos){
+        marcarSeleccionado(seleccion);
+    }
+
 });
+
+function marcarSeleccionado(seleccion){
+    newDiv = divDeClase('canal seleccionado');
+        newDiv.onclick = quitarCanal;
+        newDiv.innerHTML =  seleccion;
+        canalesMonitoreados.appendChild(newDiv);
+}
 
 document.getElementById('closeModal').addEventListener('click', function() {
     cerrarModal();
@@ -236,10 +254,6 @@ function cerrarModal(){
         /* debería preguntar si se quiere guardar los cambios o salir así sin más */
     }
 
-    if(document.getElementById('filtros').style.display == 'block'){
-        location.reload();
-    }
-
     document.getElementById('modal').style.display = 'none';
     document.getElementById('filtros').style.display = 'none';
     document.getElementById('helpText').style.display = 'none';
@@ -261,11 +275,6 @@ function nuevoModal(){
     return modal;
 }
 
-function agregarCanales(){
-    /* let modal = nuevoModal();
-    document.getElementById('contenido').appendChild(modal); */
-
-}
 
 function estasSeguro2(funcion){
     /* se le pregunta al usuario si está seguro de que ejecutar la función */
@@ -275,3 +284,18 @@ function estasSeguro2(funcion){
     /* se muestar el sí o no */
     document.getElementById('no').onclick = 'cerrarModal()';
 }
+
+const inputNombre = document.getElementById('inputNombre');
+const inputCodigo = document.getElementById('inputCodigo');
+const botonAgregar = document.getElementById('agregar');
+
+function checkInputs() {
+    if (inputNombre.value.trim() !== '' && inputCodigo.value.trim() !== '') {
+        botonAgregar.classList.remove('deshabilitado');
+    } else {
+        botonAgregar.classList.add('deshabilitado');
+    }
+}
+
+inputNombre.addEventListener('input', checkInputs);
+inputCodigo.addEventListener('input', checkInputs);

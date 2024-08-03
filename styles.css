@@ -110,16 +110,16 @@ body{
 #canalesMonitoreados{
     display: flex;
     width: 100%;
-    justify-content: center;
+    padding: 2.5% 5%;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5vw;
+    row-gap: 0.5vh;
 }
 
 .canal{
-    width: 30%;
+    width: 33%;
     padding: 5px;
-    margin : 5px;
     overflow: hidden;
     border-radius: 5px;
     color: black;
@@ -136,16 +136,53 @@ body{
     cursor: pointer;
 }
 
-.agregar{
+.agregarCanales {
     border: solid rgb(219, 204, 0) 4px;
+    padding: 2.5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    
+    border-radius: 15px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    width: 78%;
+}
+
+.input {
+    padding: 1%;
     color: white;
-    background-color: black;
+    background-color: #3c3c3c;
+}
+
+#agregar{
+    width: 20%;
+}
+
+.agregar{
+    /* border: solid rgb(219, 204, 0) 4px; */
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 238, 0);
+}
+
+.guardar{
+    background-color: rgb(0, 167, 0);
+}
+
+.guardar:hover{
+    background-color: rgb(0, 68, 0);
 }
 
 .resetear{
-    border: solid red 4px;
+    /* border: solid rgb(129, 0, 0) 4px; */
     color: white;
-    background-color: black;
+    background-color: red;
 }
 
 .resetear:hover{
@@ -234,7 +271,6 @@ body{
 
 .boton{
     width: 45%;
-    height: 15%;
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
@@ -243,8 +279,16 @@ body{
 .botones{
     display: flex;
     justify-content: space-between;
-    padding: 5%;
+    padding: 2.5% 5%;
+    height: 10vh;
 }
+
+.deshabilitado{
+    color: black;
+    background-color: grey;
+    pointer-events: none;
+}
+
 
 #tituloCanales {
     padding: 15px;

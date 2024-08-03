@@ -41,8 +41,16 @@
                         <div id="canalesMonitoreados">
                             <!-- acá se crean dinámicamente desde javascript -->
                         </div>
+                        <div class="agregarCanales">
+                            <div class="inputs">
+                                <input type="text" class="input" id="inputNombre" placeholder="nombre de canal">
+                                <input type="text" class="input" id="inputCodigo" placeholder="código de video (ej: n8Q7gXwavUU)">
+                            </div>
+                            <button class="boton agregar deshabilitado" id="agregar" onclick="agregarTransmision()">Agregar transmisión</button>
+                        </div>
+                        
                         <div class="botones">
-                            <button class="boton agregar" onclick="agregarCanales()">Agregar canales</button>
+                            <button class="boton guardar deshabilitado" id="guardar">Guardar cambios</button>
                             <button class="boton resetear" onclick="resetearCanales()">Resetear</button>
                         </div>
                 </div>
