@@ -151,12 +151,7 @@ function resetearCanales(){
 
 
 document.addEventListener("visibilitychange", function() {
-    if (document.visibilityState === "visible" && APIlista) {
-        if(salio){
-            this.location.reload();
-        }
-
-
+    if (APIlista) {
         let currentID;
         for(let i = 0 ; i < players.length ; i++){
             if(i != idSonando){
@@ -164,15 +159,13 @@ document.addEventListener("visibilitychange", function() {
                 players[i].loadVideoById(currentID);
             }
         }
-
-        
     }
 });
 
 
 function clickeado(div){
     if(div.parentElement.classList.contains('sonando')){
-        estasSeguro(div.id);
+        mute(div.id);
     } else {
         unmute(div.id);
     }
@@ -184,9 +177,11 @@ function estasSeguro(){ //
 }
 
 function mute(id){
-    console.log('intentando mutear ' + id);
     players[id].mute();
     videos[id].parentElement.classList.remove('sonando');
+    if(id == idSonando){
+        idSonando = null;
+    }
 }
 
 function mutearTodos(){
@@ -202,11 +197,10 @@ function unmute(id){
     idSonando = id;
 }
 
-let salio = false;
 function abrir(id){
     let link = players[id].getVideoUrl();
     window.open(link,'_blank');
-    salio = true;
+    cerrarModal();
 }
 
 
@@ -260,8 +254,13 @@ function cerrarModal(){
     document.getElementById('seguroText').style.display = 'none';
 }
 
-document.getElementById('muteIcon').addEventListener('click', function() {
-    mutearTodos();
+document.getElementById('openIcon').addEventListener('click', function() {
+    if(idSonando != null){
+        estasSeguro(idSonando);
+    } else {
+        alert('no hay video seleccionado')
+    }
+    
 });
 
 document.getElementById('helpIcon').addEventListener('click', function() {
