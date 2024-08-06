@@ -15,13 +15,13 @@ let idSonando; // indica la ID del video que está sonando en el momento; la usa
 
 const codigosDeVideos = {
     "TN":"cb12KmMMDJA",
-    "LN+":"ocFG3yor--M",
+    "LN+":"G5pHuBCqgrs",
     "C5N":"NdQSOItOQ5Y",
     "Crónica":"avly0uwZzOE",
     "el doce":"sFZe_RPnNSo",
     "telefé noticias":"8gs-9lsfVQU",
     /* "A24" : "QGpHLgRnrx4", */ // ;( no disponible dice
-    "Canal 26":"rY6a3fuaQ5Q",
+    "Canal 26":"MS0QdZ5zvn8",
     "TVN":"wALLwCjrg3A",
     "T13":"1QPcqOIlxKI",
     "France 24":"Y-IlMeCCtIg",
@@ -258,7 +258,7 @@ document.getElementById('openIcon').addEventListener('click', function() {
     if(idSonando != null){
         estasSeguro(idSonando);
     } else {
-        alert('no hay video seleccionado')
+        alert('no hay video seleccionado');
     }
     
 });
