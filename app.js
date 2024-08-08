@@ -167,19 +167,33 @@ document.addEventListener("visibilitychange", function() {
 
 document.addEventListener('keydown', function(event) {
     
-    if(idSonando != null){
-        if(document.fullscreenElement){
-            salirDeFullscreen()
-        } else {
-            // Verifica si la tecla presionada es 'F' (key: "f")
-            if (event.key === 'f' || event.key === 'F') {
-                // Llama a la función que deseas ejecutar
-                verEnFullscreen(idSonando);
+    if (event.key === 'f' || event.key === 'F') {
+    
+        if(idSonando != null){
+            if(document.fullscreenElement){
+                salirDeFullscreen()
+            } else {
+                // Verifica si la tecla presionada es 'F' (key: "f")
+                
+                    // Llama a la función que deseas ejecutar
+                    verEnFullscreen(idSonando);
             }
+            
         }
-        
+
     }
 
+    if (event.key === 'm' || event.key === 'M') {
+        if(idSonando != null){
+            mute(idSonando);
+        }
+    }
+
+    if (event.key === 'o' || event.key === 'O') {
+        if(idSonando != null){
+            estasSeguro();
+        }
+    }
     
     
 });
