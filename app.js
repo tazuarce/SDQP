@@ -67,9 +67,12 @@ function onYouTubeIframeAPIReady() {
         localStorage.setItem('seleccionSDQP',JSON.stringify(codigosDe(principales)));
     }
 
+    // acá se generan todos los reproductores
+    //
+    //
+    //
+
     seleccionVideos = JSON.parse(localStorage.getItem('seleccionSDQP'));
-
-
     for(let canal of Object.keys(seleccionVideos)) {
 
         // creo un elemento con la etiqueta "this"
@@ -162,13 +165,67 @@ document.addEventListener("visibilitychange", function() {
     }
 });
 
+document.addEventListener('keydown', function(event) {
+    
+    if(idSonando != null){
+        if(document.fullscreenElement){
+            salirDeFullscreen()
+        } else {
+            // Verifica si la tecla presionada es 'F' (key: "f")
+            if (event.key === 'f' || event.key === 'F') {
+                // Llama a la función que deseas ejecutar
+                verEnFullscreen(idSonando);
+            }
+        }
+        
+    }
+
+    
+    
+});
+
+function verEnFullscreen(id){
+    let video = videos[id];
+        if (video.requestFullscreen) {
+            console.log('requestFullscreen');
+            video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) { // Firefox
+            console.log('mozRequestFullScreen');
+            video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) { // Chrome, Safari y Opera
+            console.log('webkitRequestFullscreen');
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { // IE/Edge
+            console.log('msRequestFullscreen');
+            video.msRequestFullscreen();
+        }
+}
+
+function salirDeFullscreen(){
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari y Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+}
+
 
 function clickeado(div){
-    if(div.parentElement.classList.contains('sonando')){
-        mute(div.id);
+    if(document.fullscreenElement){
+        salirDeFullscreen()
     } else {
-        unmute(div.id);
+        if(div.parentElement.classList.contains('sonando')){
+            mute(div.id);
+        } else {
+            unmute(div.id);
+        }
     }
+
+    
 }
 
 function estasSeguro(){ //
@@ -184,15 +241,11 @@ function mute(id){
     }
 }
 
-function mutearTodos(){
-    for(i = 0 ; i < videos.length ; i++){
-        mute(videos[i].id)
-    }
-}
-
 function unmute(id){
-    mutearTodos();
-    players[id].unMute();
+    if(idSonando != null){
+        mute(idSonando);
+    }
+        players[id].unMute();
     videos[id].parentElement.classList.add('sonando');
     idSonando = id;
 }
@@ -240,7 +293,7 @@ document.getElementById('no').addEventListener('click', function() {
 
 document.getElementById('yes').addEventListener('click', function() {
     abrir(idSonando);
-    mutearTodos();
+    mute(idSonando);
 });
 
 function cerrarModal(){
@@ -254,13 +307,42 @@ function cerrarModal(){
     document.getElementById('seguroText').style.display = 'none';
 }
 
+document.getElementById('fullscreenIcon').addEventListener('click', function(){
+    
+    if(idSonando != null){
+        console.log(idSonando);
+        console.log(videos[idSonando]);
+        let video = videos[idSonando];
+        if (video.requestFullscreen) {
+            console.log('requestFullscreen');
+            video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) { // Firefox
+            console.log('mozRequestFullScreen');
+            video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) { // Chrome, Safari y Opera
+            console.log('webkitRequestFullscreen');
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { // IE/Edge
+            console.log('msRequestFullscreen');
+            video.msRequestFullscreen();
+        }
+    } else {
+        alert('no hay video seleccionado para abrir en pantalla completa');
+    }
+});
+
 document.getElementById('openIcon').addEventListener('click', function() {
     if(idSonando != null){
         estasSeguro(idSonando);
     } else {
-        alert('no hay video seleccionado');
+        alert('no hay video seleccionado para abrir en otra pestaña');
     }
     
+});
+
+document.getElementById('helpIcon').addEventListener('click', function() {
+    document.getElementById('modal').style.display = 'flex';
+    document.getElementById('helpText').style.display = 'block';
 });
 
 document.getElementById('helpIcon').addEventListener('click', function() {
