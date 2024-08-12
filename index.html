@@ -57,28 +57,40 @@
                     <h2 id="tituloCanales">
                         Canales monitoreados
                     </h2>
-                        <div id="canalesMonitoreados">
-                            <!-- acá se crean dinámicamente los VIDEOS desde javascript -->
-                            <!-- cada div item, tiene un div video, que tiene un iframe -->
+                    <div id="filtrosContenido">
+                        <div id="listaCanales">
+                            aaaaa
                         </div>
-                        <div class="agregarCanales">
-                            <div class="inputs">
-                                <input type="text" class="input" id="inputNombre" placeholder="nombre de canal">
-                                <input type="text" class="input" id="inputCodigo" placeholder="código de video (ej: n8Q7gXwavUU)">
+    
+                        <div class="actualesYConfirmacion">
+                            <div id="canalesMonitoreados">
+                                <!-- acá se crean dinámicamente los VIDEOS desde javascript -->
+                                <!-- cada div item, tiene un div video, que tiene un iframe -->
                             </div>
-                            <button class="boton agregar deshabilitado" id="agregar" onclick="agregarTransmision()">
-                                Agregar transmisión
-                            </button>
+                            <div class="agregarCanales">
+                                <div class="inputs">
+                                    <input type="text" class="input" id="inputNombre" placeholder="nombre de canal">
+                                    <input type="text" class="input" id="inputCodigo" placeholder="código de video (ej: n8Q7gXwavUU)">
+                                </div>
+                                <button class="boton agregar deshabilitado" id="agregar" onclick="agregarTransmision()">
+                                    Agregar transmisión
+                                </button>
+                            </div>
+    
+                            <div class="botones">
+                                <button class="boton guardar deshabilitado" id="guardar">
+                                    Guardar cambios
+                                </button>
+                                <button class="boton resetear" onclick="resetearCanales()">
+                                    Resetear
+                                </button>
+                            </div>
                         </div>
-                        
-                        <div class="botones">
-                            <button class="boton guardar deshabilitado" id="guardar">
-                                Guardar cambios
-                            </button>
-                            <button class="boton resetear" onclick="resetearCanales()">
-                                Resetear
-                            </button>
-                        </div>
+                    </div>
+                    
+                    
+                    
+                    
                 </div>
                 <div id="helpText">
                     <h1>

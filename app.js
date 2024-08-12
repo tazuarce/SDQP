@@ -122,8 +122,24 @@ function agregarTransmision(){
 }
 
 function quitarCanal(evento){
-    delete seleccionVideos[evento.target.innerHTML];
-    evento.target.remove();
+    let nombreCanal = evento.target.innerHTML;
+    delete seleccionVideos[nombreCanal];
+
+    let seleccionados = document.getElementById('canalesMonitoreados').children;
+    for(let seleccionado of seleccionados){
+        if(seleccionado.innerHTML == nombreCanal){
+            seleccionado.remove();
+        }
+    }
+
+    let canales = document.getElementById('listaCanales').children;
+    for(let canal of canales){
+        if(canal.innerHTML == nombreCanal){
+            canal.classList.remove('seleccionado');
+            canal.classList.add('seleccionable');
+        }
+    }
+
     /* localStorage.setItem('seleccionSDQP',JSON.stringify(seleccionVideos)); */
     cambiosSinGuardar();
     
@@ -271,10 +287,28 @@ function abrir(id){
 }
 
 
+// al hacer click en el ícono se genera tanto la lista para seleccionar como la seleccionada
 document.getElementById('worldIcon').addEventListener('click', function() {
     document.getElementById('modal').style.display = 'flex';
     document.getElementById('filtros').style.display = 'block';
 
+    // se arma lista para seleccionar canales
+    let listaCanales = document.getElementById('listaCanales');
+    listaCanales.innerHTML = '';
+    for(let canal in codigosDeVideos){
+        newDiv = divDeClase('canal');
+        if(canal in seleccionVideos){
+            newDiv.classList.add('seleccionado')
+        } else {
+            newDiv.classList.add('seleccionable')
+        }
+        newDiv.onclick = clickCanal;
+        newDiv.innerHTML =  canal;
+        listaCanales.appendChild(newDiv);
+    }
+
+
+    // se arma grilla de canales seleccionados
     seleccionVideos = JSON.parse(localStorage.getItem('seleccionSDQP'));
     let canalesMonitoreados = document.getElementById('canalesMonitoreados');
     canalesMonitoreados.innerHTML = '';
@@ -284,11 +318,33 @@ document.getElementById('worldIcon').addEventListener('click', function() {
 
 });
 
+function clickCanal(evento){
+    let canal = evento.target.innerHTML;
+    if(canal in seleccionVideos){
+        quitarCanal(evento);
+    } else {
+        seleccionVideos[canal] = codigosDeVideos[canal];
+        marcarSeleccionado(canal);
+    }
+    cambiosSinGuardar();
+}
+
+// marcar como seleccionado equivale a mostrarlo como seleccionado en el menú de edición
 function marcarSeleccionado(seleccion){
-    newDiv = divDeClase('canal seleccionado');
-        newDiv.onclick = quitarCanal;
-        newDiv.innerHTML =  seleccion;
-        canalesMonitoreados.appendChild(newDiv);
+    newDiv = divDeClase('canal seleccion');
+    newDiv.onclick = quitarCanal;
+    newDiv.innerHTML =  seleccion;
+    canalesMonitoreados.appendChild(newDiv);
+
+    let canales = document.getElementById('listaCanales').children;
+    console.log(canales);
+    for(let canal of canales){
+        console.log(canal);
+        if(canal.innerHTML == seleccion){
+            canal.classList.remove('seleccionable');
+            canal.classList.add('seleccionado')
+        }
+    }
 }
 
 document.getElementById('closeModal').addEventListener('click', function() {
