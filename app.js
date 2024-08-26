@@ -19,8 +19,9 @@ const codigosDeVideos = {
     "C5N":"NdQSOItOQ5Y",
     "Crónica":"avly0uwZzOE",
     "el doce":"sFZe_RPnNSo",
+    "Aire de Santa Fe" : "FNpUWtQMeTs",
     "telefé noticias":"8gs-9lsfVQU",
-    /* "A24" : "QGpHLgRnrx4", */ // ;( no disponible dice
+    /* "A24" : "QGpHLgRnrx4", */ // no disponible dice
     "Canal 26":"MS0QdZ5zvn8",
     "TVN":"wALLwCjrg3A",
     "T13":"1QPcqOIlxKI",
@@ -28,7 +29,11 @@ const codigosDeVideos = {
     "FOX":"YDfiTGGPYCk",
     "CBS News": "GiIQ-aCCA_w",
     "USA Today" : "vZYMwAm8sso",
+    "ABC News" : "-mvUkiILTqI",
     "ABC7 New York" : "oFOTr81KHLg",
+    "ABC7 Eyewitness" : "-E0AHOOGo24",
+    "ABC7 Bay Area" : "yBsxGdPKETI",
+    "ABC7 Chicago" : "SlpTSiNv-m4",
     "FORO" : "Ulwgdf5t46o",
     "euronews" : "O9mOtdZ-nSk",
     "France 24" : "Y-IlMeCCtIg",
@@ -36,10 +41,23 @@ const codigosDeVideos = {
     "CNA" : "XWq5kBlakcQ",
     "GB News" : "8WX6YL9JnLw",
     "Canal Sur Andalucía" : "P3FhO1UUGE8",
-    "ABC News" : "-mvUkiILTqI",
     "CGTN Europe" : "UkcHAbq9PVQ",
-    "Watch Sky News" : "oJUvTVdTMyY"
-    
+    "Watch Sky News" : "oJUvTVdTMyY",
+    "DW ESpañol" : "Io5mt83nCcU",
+    "NTN24" : "JxpMmv1Wm2M",
+    "Milenio" : "4I8W6KUCzSY",
+    "Noticias Caracol" : "oAZDO2s9eLU",
+    "Houston City Camera" : "wUQc3RoLAPs",
+    "Multimedios Costa Rica" : "NOJf0umMvi4",
+    "Al Jazeera English" : "gCNeDWCI0vo",
+    /* "NHK WORLD-JAPAN" : "f0lYkdA-Gtw", */
+    "JapaNews" : "coYw-eVU0Ks",
+    /* "KBS KOREA" : "OxQQsIvJTTU", */
+    "TelediarioMx" : "GlfC3erTb3Q",
+    /* "Televisión Canaria" : "6LlZXt8nk4s", */
+    "GB News" : "8WX6YL9JnLw"
+
+
 }
 
 const principales = ["TN", "LN+", "C5N", "Crónica", "telefé noticias", "Canal 26", "el doce", "TVN", "T13"];
