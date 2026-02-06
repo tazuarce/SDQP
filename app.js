@@ -15,16 +15,16 @@ let idSonando; // indica la ID del video que está sonando en el momento; la usa
 
 const codigosDeVideos = {
     "TN":"cb12KmMMDJA",
-    "LN+":"unR6PQyi8TM",
+    "LN+":"PDtB9Hc0YJM",
     "C5N":"SF06Qy1Ct6Y",
-    "Crónica":"avly0uwZzOE",
+    "Crónica":"sGnaFL_Syl0",
     "el doce":"nndzeKDSjuc",
     "Aire de Santa Fe" : "DqPREzenv00",
     "telefé noticias":"XhAYcYpPzTc",
     "A24" : "ArKbAx1K-2U", // no disponible dice??
     "Canal 26":"c8Uxc6pwDNA",
     "TVN":"N-bwYlUQNd0",
-    "T13":"sX7iv0Gx-iY",
+    "T13":"Q5QxSOYvjLc",
     "France 24":"Y-IlMeCCtIg",
     "FOX":"4nMfRpesYfw",
     "CBS News": "WEYwkrfANzs",
